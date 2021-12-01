@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <title>Image scripting experiment</title>
+    <style type="text/css">
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans',
+          'Helvetica Neue', sans-serif;
+        user-select: none;
+      }
+
+      code {
+        background-color: #ddd;
+        font-family: Consolas, 'Courier New', Courier, monospace;
+        padding: 0.2rem 0.4rem;
+      }
+
+      .svg {
+        height: 200px;
+        width: 200px;
+      }
+    </style>
+  </head>
+  <body>
+    <article>
+      <header>
+        <h1>Content Security Policy on SVG</h1>
+      </header>
+    </article>
+    <article>
+      <header>
+        <h1>SVG with scripting via &lt;object&gt;</h1>
+      </header>
+      <object class="svg" data="./script.svg" type="image/svg+xml"></object>
+      <object class="svg" data="./csp-script-none/script.svg" type="image/svg+xml"></object>
+      <object class="svg" data="./csp-script-unsafe-inline/script.svg" type="image/svg+xml"></object>
+      <p>
+        <a href="./script.svg" rel="noopener noreferrer" target="_blank">Open SVG in new window</a>
+      </p>
+      <p>
+        <a href="./csp-script-none/script.svg" rel="noopener noreferrer" target="_blank"
+          >Open SVG in new window with CSP <code>script-src 'none';</code></a
+        >
+      </p>
+      <p>
+        <a href="./csp-script-unsafe-inline/script.svg" rel="noopener noreferrer" target="_blank"
+          >Open SVG in new window with CSP <code>script-src 'unsafe-inline';</code></a
+        >
+      </p>
+    </article>
+    <article>
+      <header>
+        <h1>SVG with CSS via &lt;object&gt;</h1>
+      </header>
+      <object class="svg" data="./script.svg" type="image/svg+xml"></object>
+      <object class="svg" data="./csp-style-none/script.svg" type="image/svg+xml"></object>
+      <object class="svg" data="./csp-style-unsafe-inline/script.svg" type="image/svg+xml"></object>
+      <p class="my-circle">This text will in green if the SVG leaked the style.</p>
+      <p>Conclusion: CSS only leaks if the SVG is inlined in the HTML.</p>
+      <p>
+        <a href="./script.svg" rel="noopener noreferrer" target="_blank">Open SVG in new window</a>
+      </p>
+      <p>
+        <a href="./csp-style-none/script.svg" rel="noopener noreferrer" target="_blank"
+          >Open SVG in new window with CSP <code>style-src 'none';</code></a
+        >
+      </p>
+      <p>
+        <a href="./csp-style-unsafe-inline/script.svg" rel="noopener noreferrer" target="_blank"
+          >Open SVG in new window with CSP <code>style-src 'unsafe-inline';</code></a
+        >
+      </p>
+    </article>
+    <article>
+      <header>
+        <h1>SVG with CSS via &lt;img&gt;</h1>
+      </header>
+      <img class="svg" src="./script.svg" />
+      <img class="svg" src="./csp-style-none/script.svg" />
+      <img class="svg" src="./csp-style-unsafe-inline/script.svg" />
+    </article>
+    <article>
+      <header>
+        <h1>SVG with CSS via &lt;video&gt;</h1>
+      </header>
+      <video class="svg"><source src="./script.svg" type="image/svg+xml" /></video>
+      <video class="svg"><source src="./csp-style-none/script.svg" type="image/svg+xml" /></video>
+      <video class="svg"><source src="./csp-style-unsafe-inline/script.svg" type="image/svg+xml" /></video>
+    </article>
+  </body>
+</html>

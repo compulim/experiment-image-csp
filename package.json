@@ -1,0 +1,15 @@
+{
+  "name": "experiment-image-scripting",
+  "version": "0.0.0-0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon --exec \"serve --config\" serve.json"
+  },
+  "author": "William Wong (https://github.com/compulim)",
+  "license": "MIT",
+  "devDependencies": {
+    "nodemon": "^2.0.15",
+    "serve": "^13.0.2"
+  }
+}

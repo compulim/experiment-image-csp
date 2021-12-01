@@ -1,0 +1,35 @@
+
+<svg viewBox="0 0 10 10" xmlns="http://www.w3.org/2000/svg">
+  <!-- This is copied from https://developer.mozilla.org/en-US/docs/Web/SVG/Element/script and adopted for IE11. -->
+  <script>
+  // <![CDATA[
+  window.addEventListener('DOMContentLoaded', function () {
+    const padStart = function (str, count, padding) {
+      count -= str.length;
+
+      while (count-- > 0) {
+        str = padding + str;
+      }
+
+      return str;
+    };
+
+    const getColor = function () {
+      const R = padStart(Math.round(Math.random() * 255).toString(16), 2, '0');
+      const G = padStart(Math.round(Math.random() * 255).toString(16), 2, '0');
+      const B = padStart(Math.round(Math.random() * 255).toString(16), 2, '0');
+
+      return '#' + R + G + B;
+    };
+
+    document.querySelector('circle').addEventListener('click', function (event) {
+      event.target.style.fill = getColor();
+    });
+  });
+  // ]]>
+  </script>
+
+  <circle cx="5" cy="5" r="4" />
+  <!-- <a href="javascript:alert('Hello, World!');"><text style="fill: #00f; font-size: .8px; text-decoration: underline;" x="1" y="1.6">Link</text></a> -->
+  <a href="https://bing.com/"><text style="fill: #00f; font-size: .8px; text-decoration: underline;" x="1" y="1.6">Link</text></a>
+</svg>
